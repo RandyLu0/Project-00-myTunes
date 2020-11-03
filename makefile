@@ -1,9 +1,9 @@
-all: main.o myTunes.o 
-	gcc -o program main.o myTunes.o 
-main.o: main.c myTunes.h
+all: main.o playlist.o 
+	gcc -o program main.o playlist.o 
+main.o: main.c playlist.h
 	gcc -c main.c 
-myTunes.o: myTunes.c myTunes.h
-	gcc -c myTunes.c 
+myTunes.o: playlist.c playlist.h
+	gcc -c playlist.c 
 run:
 	./program
 clean:
