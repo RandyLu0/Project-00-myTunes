@@ -1,5 +1,5 @@
-#ifndef MYTUNES_H
-#define MYTUNES_H
+#ifndef PLAYLIST_H
+#define PLAYLIST_H
  
 struct playlist{
   char name[100];
@@ -17,5 +17,7 @@ struct playlist* find_artist(struct playlist* s, char* a);
 struct playlist* random(struct playlist* s);
 struct playlist* remove(struct playlist* s, char* n, char* a);
 struct playlist* free_playlist(struct playlist* s);
+
+int len(struct playlist* s);
 
 #endif
