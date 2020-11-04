@@ -15,7 +15,7 @@ void print(struct playlist* s);
 struct playlist* find_song(struct playlist* s, char* n, char* a);
 struct playlist* find_artist(struct playlist* s, char* a);
 struct playlist* shuffle(struct playlist* s);
-struct playlist* remove(struct playlist* s, char* n, char* a);
+struct playlist* remove_song(struct playlist* s, char* n, char* a);
 struct playlist* free_playlist(struct playlist* s);
 
 int len(struct playlist* s);
