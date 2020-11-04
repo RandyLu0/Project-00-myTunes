@@ -9,6 +9,7 @@ struct playlist* new_playlist(char* n, char* a){
     pl = malloc(sizeof(struct playlist));
     strcpy(pl->name, n);
     strcpy(pl->artist, a);
+    pl->next = NULL;
     return pl;
 }
 
