@@ -22,6 +22,20 @@ int len(struct playlist* s){
     return n;
 }
 
+
+void print_item(struct playlist * given){
+        printf("%s: %s\n",given->artist, given->name);
+}
+
+void print_list(struct playlist * node){
+
+        while(node!=NULL){
+                print_item(node);
+                node = node->next;
+        }
+
+}
+
 void print(struct playlist* s){
   while (s){
     printf("\"%s\" - %s\n", s->name, s->artist);
