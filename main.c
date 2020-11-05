@@ -1,23 +1,21 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h> 
 #include "playlist.h"
 typedef struct playlist* p;
-int main(){
-    p p1 = new_playlist("Future","Life is Good");
-    p1 = shuffle(p1);
-    printf("%s\n",p1->name);
+
+int main(){ 
+    srand(time(NULL));
     
-    
-    
-    struct playlist* song1 = NULL;
+  /*   struct playlist* song1 = NULL;
     song1 = insert_front(song1, "Let's Fly","Disney");
     song1 = insert_front(song1, "What","Child");
     song1 = insert_end(song1, "Crazy Crazy","SHS");
     song1 = insert_end(song1, "Popping","Child");
-
-    printf("TEST 1\n");
+ */
+/*     printf("TEST 1\n");
     print_list(song1);
-    free_playlist(song1);
+    free_playlist(song1); */
 
     struct playlist* song2 = NULL;
     song2 = insert_alpha(song2, "Imperfect","Child");

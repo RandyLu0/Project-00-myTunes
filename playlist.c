@@ -65,7 +65,6 @@ struct playlist* find_artist(struct playlist* s, char* a){
 
 struct playlist* shuffle(struct playlist* s){
     int mod = len(s);
-    srand(time(NULL));
     int r = rand() % mod;
     struct playlist* p = s;
     while(r){
