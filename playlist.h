@@ -7,6 +7,9 @@ struct playlist{
   struct playlist *next;
 };
 
+void print_item(struct playlist *);
+void print_list(struct playlist *);
+
 struct playlist* new_playlist(char* n, char* a);
 struct playlist* insert_front(struct playlist* s, char* n, char* a);
 struct playlist* insert_end(struct playlist* s, char* n, char* a);
