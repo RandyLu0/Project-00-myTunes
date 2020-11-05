@@ -22,6 +22,33 @@ int len(struct playlist* s){
     return n;
 }
 
+void print(struct playlist* s){
+  while (s){
+    printf("\"%s\" - %s\n", s->name, s->artist);
+    s = s->next;
+  }
+}
+
+struct playlist* find_song(struct playlist* s, char* n, char* a){
+  struct playlist* find = s;
+  while (find != NULL){
+    if (strcmp(find->name, n) == 0 && strcmp(find->artist, a) == 0)
+      return find;
+    find = find->next;
+  }
+  return NULL;
+}
+
+struct playlist* find_artist(struct playlist* s, char* a){
+  struct playlist* find = s;
+  while (find != NULL){
+    if (strcmp(find->artist, a) == 0)
+      return find;
+    find = find->next;
+  }
+  return NULL;
+}
+
 struct playlist* shuffle(struct playlist* s){
     int mod = len(s);
     srand(time(NULL));
