@@ -22,25 +22,16 @@ int len(struct playlist* s){
     return n;
 }
 
-
 void print_item(struct playlist * given){
-        printf("%s: %s\n",given->artist, given->name);
+        printf("%s: %s | ",given->artist, given->name);
 }
 
 void print_list(struct playlist * node){
-
-        while(node!=NULL){
+        while(node){
                 print_item(node);
                 node = node->next;
         }
-
-}
-
-void print(struct playlist* s){
-  while (s){
-    printf("\"%s\" - %s\n", s->name, s->artist);
-    s = s->next;
-  }
+        printf("\n");
 }
 
 struct playlist* find_song(struct playlist* s, char* n, char* a){
@@ -63,7 +54,7 @@ struct playlist* find_artist(struct playlist* s, char* a){
   return NULL;
 }
 
-struct playlist* shuffle(struct playlist* s){
+struct playlist* ran(struct playlist* s){
     int mod = len(s);
     int r = rand() % mod;
     struct playlist* p = s;
@@ -76,19 +67,25 @@ struct playlist* shuffle(struct playlist* s){
 
 struct playlist* remove_song(struct playlist* s, char* n, char* a){
     struct playlist *h = s;
+    struct playlist *p = s;
+	p = p->next;
     if(!(strcmp(s->artist,a) || strcmp(s->name,n))){
         h = s->next;
+        free(s);
         return h;
     }
     while(s->next){
         if(!(strcmp(s->next->artist,a) || strcmp(s->next->name,n))){
-            s->next = s->next->next;
+            s->next = p->next;
+			free(p);
             return h;
         }
         s = s->next;
+        p = p->next;
     }
     return h;
 }
+
 struct playlist* free_playlist(struct playlist* s){
     struct playlist *h;
     while(h){
@@ -100,19 +97,14 @@ struct playlist* free_playlist(struct playlist* s){
 }
 
 struct playlist* insert_front(struct playlist *s, char* n, char* a){
-
         struct playlist * nu = new_playlist(n,a);
         nu->next=s;
-
         return nu;
 }
 
 struct playlist* insert_end(struct playlist* s, char* n, char* a){
-
         struct playlist *first=s;
-
         struct playlist * nu = new_playlist(n,a);
-
         while(1){
                 if(s->next==NULL){
                         s->next=nu;
@@ -121,23 +113,19 @@ struct playlist* insert_end(struct playlist* s, char* n, char* a){
                 else
                         s=s->next;
         }
-
         return first;
 }
 
 struct playlist* insert_alpha(struct playlist * s, char *n, char*a){
         struct playlist * nu = new_playlist(n,a);
-
         if(s==NULL){
                 s=nu;
                 return nu;
         }
-
         if(strcmp(nu->artist, s->artist)<0){
                 nu->next = s;
                 return nu;
         }
-
         struct playlist * first = s;
         struct playlist * previous = NULL;
         while(1){
@@ -184,7 +172,6 @@ struct playlist* insert_alpha(struct playlist * s, char *n, char*a){
                 previous=s;
                 s=s->next;
         }
-
         return first;
 }
 
