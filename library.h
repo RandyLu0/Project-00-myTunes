@@ -8,7 +8,7 @@ struct playlist{
 };
 
 struct playlist* new_playlist(char* n, char* a);
-struct playlist* add_playlist(struct playlist* old, struct* playlist new);
+struct playlist* add_playlist(struct playlist* [] lib, char* name, char* artist);
 struct playlist* search_song(struct playlist* s, char* n, char* a);
 struct playlist* search_artist(struct playlist* s, char* a);
 void print_alpha(struct playlist* s, char* letter);
