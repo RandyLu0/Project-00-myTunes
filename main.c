@@ -65,5 +65,31 @@ int main(){
     printf("\n");
     printf("LIBRARY TESTS\n");
 
+    struct playlist* lib[27];
+    struct playlist* s1 = NULL;
+    song2 = insert_alpha(s1, "Imperfect","Ahild");
+    song2 = insert_alpha(s1, "DNA and RNA","Abs");
+    song2 = insert_alpha(s1, "Happy Birthday","Aome");
+    song2 = insert_alpha(s1, "Let's Fly","Aisney");
+    song2 = insert_alpha(s1, "What","Ahild");
+    song2 = insert_alpha(s1, "New World","Abs");
+    song2 = insert_alpha(s1, "Why not ABC","Abs");
+    song2 = insert_alpha(s1, "Crazy Crazy","Abs");
+    song2 = insert_alpha(s1, "Popping","Ahild");
+
+    lib[0]= s1;
+    lib[0]= add_playlist(lib,"apple on the tree","AaA");
+    lib[0]= add_playlist(lib,"Bob the Cat","Amazon");
+
+    print_list(lib[0]);
+
+    struct playlist* found = search_song(lib,"apple on the tree","AaA");
+    printf("\nTesting the search_song function\n");
+    print_item(found);
+
+    found = search_artist(lib,"Aome");
+    printf("\nTesting the search_artist function\n");
+    print_item(found);
+    
     return 0;
 }
