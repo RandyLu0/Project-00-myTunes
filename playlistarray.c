@@ -47,7 +47,10 @@ struct playlist* search_song(struct playlist ** lib, char* n, char* a){
                 if(strcmp(node->name,n)==0 && strcmp(node->artist,a)==0){
                         return node;
                 }
-                node=node->next;
+                if(node->next==NULL)
+                        break;
+                else
+                        node=node->next;
         }
 
         return NULL;
@@ -75,7 +78,10 @@ struct playlist* search_artist(struct playlist ** lib, char* a){
                 if(strcmp(node->artist,a)==0){
                         return node;
                 }
-                node=node->next;
+                if(node->next==NULL)
+                        break;
+                else
+                        node=node->next;
         }
 
         return NULL;
