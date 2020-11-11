@@ -23,7 +23,10 @@ int len(struct playlist* s){
 }
 
 void print_item(struct playlist * given){
-        printf("%s: %s | ",given->artist, given->name);
+        if(given==NULL)
+                printf("NULL");
+        else
+                printf("%s: %s\n",given->artist, given->name);
 }
 
 void print_list(struct playlist * node){
