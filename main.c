@@ -6,9 +6,9 @@
 typedef struct playlist* p;
 
 int main(){ 
-    srand(time(NULL));
+	srand(time(NULL));
 
-   /*  p s;
+   	p s;
     struct playlist* s2 = NULL;
     s2 = insert_front(s2, "Imperfect","Child");
     s2 = insert_alpha(s2, "DNA and RNA","SHS");
@@ -56,7 +56,7 @@ int main(){
     printf("freeing list...\n");
     printf("printing list after freed:\n");
     print_list(s2);
- */
+
     struct playlist** lib = init();
 
     struct playlist* s1 = NULL;
@@ -73,32 +73,49 @@ int main(){
     lib[0] = add_playlist(lib,"apple on the tree","AaA");
     lib[0] = add_playlist(lib,"Bob the Cat","Amazon");
     printf("\nLIBRARY TESTS\n");
+	printf("\ntesting print for alphabetical order:\n");
     printf("printing all entries under 'a':\n");
     //print_alpha(lib,'a');
-    
-    
-    /* struct playlist* found = search_song(lib,"apple on the tree","AaA");
-    printf("\ntesting search_song:\n");
-    printf("looking for apple on the tree: AaA\n");
-    print_item(found);
- */
-    
+	printf("printing all entries under b:\n");
+	//print_alpha(lib,'b');
+	printf("\ntesting print for artists:\n");
+	printf("printing for Abs:\n");
+	//print_artist(lib,"Abs");
+	printf("printing for artist not in the library:\n");
+	//print_artist(lib,"NULL");
+	printf("\ntesting print for library:\n");
+	//print_library(lib);
+	printf("\ntesting search_artist:\n");
+	printf("searching for Abs:\n");
+	struct playlist* art = search_artist(lib,"Abs");
+	print_list(art);
+	printf("searching for artist not in library:\n");
+	art = search_artist(lib,"NULL");
+	print_list(art);
+	printf("\ntesting search_song:\n");
+	printf("searching for Bob the Cat: Amazon\n");
+	struct playlist* song = search_song(lib,"Bob the Cat","Amazon");
+	print_item(song);
+	printf("searching for song not in library:\n");
+	song = search_song(lib,"NULL","NULL");
+	print_item(song);
+
+	printf("testing delete:\n");
+	printf("deleting apples on the tree: AaA\n");
+	delete(lib,"apple on the tree","AaA");
+	//print_alpha(lib,'a');
+	printf("\ndeleting song not in the library:\n");
     delete(lib,"NULL","NULL");
-    print_list(lib[0]);
-    //delete(lib,"apple on the tree","AaA");
-   //print_library(lib);
+	//print_library(lib);
+	printf("\ntesting shuffle:\n");
     shuffle(lib);
+	printf("shuffling again\n");
+	shuffle(lib);
+	printf("\ntesting clear:\n");
+	printf("clearing library...\n");
     clear(lib);
-    //print_library(lib);
+	printf("printing library after cleared:\n");
+	//print_library(lib);
 
-   /*  printf("looking for song not in library:\n");
-    found = search_song(lib,"NULL","NULL"); */
-
-
-
-    /* found = search_artist(lib,"Ndsdada");
-    printf("\nTesting the search_artist function\n");
-    //print_item(found); */
-    
     return 0;
 }
