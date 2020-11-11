@@ -89,36 +89,36 @@ struct playlist* search_artist(struct playlist ** lib, char* a){
 
 void print_alpha(struct playlist ** lib, char letter){
   printf("%c list\n", letter);
-  int i;
-  for (i = 0; ((lib[i])->artist)[0] - letter <= 0; i++){
-    if (((lib[i])->artist)[0] == letter)
-      printf("%s: %s | ", lib[i]->artist, lib[i]->name);
+  int index = letter - 'a';
+  struct playlist * find = lib[index];
+  if (!find)
+    printf("none found\n");
+  else while (find){
+    printf("%s: %s | ", find->artist, find->name);
+    find = find->next;
   }
-  printf("none found\n");
 }
 
 void print_artist(struct playlist ** lib, char* a){
   printf("looking for [%s]", a);
-  struct playlist ** list = lib;
-  int i;
-  for (i = 0; ((list[i])->artist) - a <= 0 ; i++){
-    if (strcmp((list[i])->artist, a) == 0)
-      printf("artist found! %s: %s | ", list[i]->artist, lib[i]->name);
+  struct playlist * find = lib[a[0] - 'a'];
+  int count = 0;
+  while(find){
+    if (strcmp(find->artist, a) == 0){
+      printf(" %s: %s | ", find->artist, find->name);
+      count++;
+    }
+  find = find->next;
   }
-  printf("artist not found\n");
+  if (count == 0)
+    printf("artist not found\n");
 }
 
 void print_library(struct playlist ** lib){
-  char first_letter = ((lib[0])->artist)[0];
-  printf("%c list\n", first_letter);
-  print_alpha(lib, first_letter);
-
   int i;
-  for (i = 1; lib[i]; i++){
-    if (((lib[i])->artist)[0] > ((lib[i-1])->artist)[0]){
-      printf("%c list\n", ((lib[i])->artist)[0]);
-      print_alpha(lib,((lib[i])->artist)[0]);
-    }
+  for (i = 0; i < 27; i++){
+    if (lib[i])
+      print_alpha(lib, (lib[i]->artist)[0])
   }
 }
 
