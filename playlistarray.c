@@ -117,15 +117,18 @@ void print_artist(struct playlist ** lib, char* a){
 void print_library(struct playlist ** lib){
   int i;
   for (i = 0; i < 27; i++){
-    if (lib[i])
-      print_alpha(lib, (lib[i]->artist)[0])
+    if (lib[i]){
+      print_alpha(lib, (lib[i]->artist)[0]);
+	  printf("\n");
+	}
   }
+  
 }
 
 void clear(struct playlist** lib){
 	int i;
 	for(i = 0; i < 27; i++){
-		free_playlist(lib[i]);
+		lib[i] = free_playlist(lib[i]);
     }
 } 
 
