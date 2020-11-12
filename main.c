@@ -21,9 +21,9 @@ int main(){
     printf("LINKED LIST TESTS\n");
     printf("\nprinting list:\n");
     print_list(s2);
-    printf("\nprinting node:\n");
+    printf("printing node:\n");
     print_item(s2);
-    printf("\n\ntesting find_song:\n");
+    printf("\ntesting find_song:\n");
     s = find_song(s2,"new world","usa");
     printf("looking for new world: usa\n");
     print_list(s);
@@ -43,14 +43,14 @@ int main(){
     printf("testing again:\n");
     s = ran(s2);
     print_list(s);
-    printf("\ntesting remove:\n");
+    printf("testing remove:\n");
     s = remove_song(s2,"crazy crazy","shs");
     printf("removing shs: crazy crazy\n");
     print_list(s);
     s = remove_song(s2,"NULL","NULL");
     printf("removing song not in the playlist:\n");
     print_list(s);
-    printf("\ntesting free_list:\n");
+    printf("testing free_list:\n");
     s2 = free_playlist(s2);
     printf("freeing list...\n");
     printf("printing list after freed:\n");
@@ -82,7 +82,7 @@ int main(){
     print_artist(lib,"NULL");
     printf("\ntesting print for library:\n");
     print_library(lib);
-    printf("\n\ntesting search_artist:\n");
+    printf("\ntesting search_artist:\n");
     printf("searching for abs:\n");
     struct playlist* art = search_artist(lib,"abs");
     print_list(art);
@@ -103,7 +103,7 @@ int main(){
     printf("\ndeleting song not in the library:\n");
     delete(lib,"NULL","NULL");
     print_library(lib);
-    printf("\n\ntesting shuffle:\n");
+    printf("\ntesting shuffle:\n");
     shuffle(lib);
     printf("shuffling again\n");
     shuffle(lib); 
