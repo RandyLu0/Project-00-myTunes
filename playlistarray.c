@@ -16,10 +16,7 @@ struct playlist* add_playlist(struct playlist ** lib, char* n, char* a){
         if(first_letter-'a' >= 0 && first_letter-'a' <= 25){
                 i = first_letter-'a';
         }
-        else
-                if(first_letter-'A' >= 0 && first_letter-'A' <= 25){
-                        i = first_letter-'A';
-                }
+     
         else
                 i=27;
 
