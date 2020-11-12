@@ -128,15 +128,18 @@ void print_library(struct playlist ** lib){
 void clear(struct playlist** lib){
 	int i;
 	for(i = 0; i < 27; i++){
-		lib[i] = free_playlist(lib[i]);
+                if(lib[i]){
+                        lib[i] = free_playlist(lib[i]);
+                }
     }
+    free(lib);
 } 
 
 void delete(struct playlist ** lib, char* n, char* a){
 	int i;
 	for(i = 0; i < 27; i++){
 		if(lib[i]){
-			remove_song(lib[i],n,a);
+			lib[i] = remove_song(lib[i],n,a);
 		}
 	}
 } 
@@ -153,7 +156,7 @@ void shuffle(struct playlist** lib){
 }
 struct playlist** init(){
 	struct playlist** lib;
-	lib = calloc(27,sizeof(struct playlist));
+	lib = (struct playlist**) calloc(27,sizeof(struct playlist));
 	int i;
 	for(i = 0; i < 27; i++){
 		lib[i] = NULL;
